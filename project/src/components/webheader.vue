@@ -21,9 +21,9 @@
     </el-col>
     <el-col :span="2">
       <div class="res">
-      <span>登录</span>
+      <span class="clickAble" v-on:click="goToLogin()">登录</span>
       <span>|</span>
-      <span>注册</span>
+      <span class="clickAble" v-on:click="goToRegister()">注册</span>
       </div>
     </el-col>
   </el-row>
@@ -32,12 +32,20 @@
 <script>
 export default {
   name: 'webheader',
-  data() {
+  data () {
     return {
       input: '',
       activeIndex: '1',
       activeIndex2: '1',
-      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+    }
+  },
+  methods: {
+    goToRegister () {
+      this.$router.push('/')
+    },
+    goToLogin () {
+      this.$router.push({path: '/login'})
     }
   }
 }
@@ -53,6 +61,7 @@ export default {
     color: white;
     font-size: 22px;
     margin-left: 10px;
+    font-style: italic;
   }
   .res{
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -67,5 +76,8 @@ export default {
   #avatar{
     margin-left: 600px;
     margin-top: 5px;
+  }
+  .clickAble{
+   cursor: pointer;
   }
 </style>
