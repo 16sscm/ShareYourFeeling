@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     goToRegister () {
-      this.$router.push('/')
+      this.$router.push('/register')
     },
     goToLogin () {
       this.$router.push({path: '/login'})

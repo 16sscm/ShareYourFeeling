@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'webfooter'
-  }
+export default {
+  name: 'webfooter'
+}
 </script>
 
 <style scoped>
