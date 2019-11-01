@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import register from '../pages/register'
 import login from '../pages/login'
 import index from '../pages/index'
+import details from '../pages/details'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index
+    },
+    {
+      path: '/detail',
+      name: 'detail',
+      component: details
     }
   ]
 })

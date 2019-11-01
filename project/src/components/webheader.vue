@@ -11,7 +11,7 @@
         text-color="#fff"
         active-text-color="#ffd04b"
         id="menu">
-        <el-menu-item index="1">主页</el-menu-item>
+        <el-menu-item index="1" v-on:click="goToIndex()">主页</el-menu-item>
         <el-menu-item index="3" >浏览</el-menu-item>
         <el-menu-item index="4">附近的人</el-menu-item>
       </el-menu>
@@ -46,6 +46,9 @@ export default {
     },
     goToLogin () {
       this.$router.push({path: '/login'})
+    },
+    goToIndex(){
+      this.$router.push('/')
     }
   }
 }

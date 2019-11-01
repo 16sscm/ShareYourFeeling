@@ -9,18 +9,18 @@
       </el-col>
       <el-col span="20">
         <el-row>
-          <div id="content">这是一个带一个图片的微博</div>
+          <div id="content" >这是一个带一个图片的微博</div>
         </el-row>
         <el-row type="flex" id="writter" style="vertical-align: middle">
-          <el-col :span="4">
+          <el-col :span="6">
             <div>
               <el-avatar :size="30" :src="circleUrl" id="avatar"></el-avatar>
               <span>Test</span>
               <span>10月31日 21:56</span>
             </div>
           </el-col>
-          <el-col :span="14"></el-col>
-          <el-col :span="6">
+          <el-col :span="12"></el-col>
+          <el-col :span="8">
             <div id="icons">
               <i class="el-icon-position"></i>
               <span>114514</span>
