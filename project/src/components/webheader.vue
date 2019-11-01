@@ -1,7 +1,7 @@
 <template>
   <el-row class="title">
-    <el-col :span="4"><h1 class="blog">ShareYourFeeling</h1></el-col>
-    <el-col :span="10">
+    <el-col :span="3"><h1 class="blog">ShareYourFeeling</h1></el-col>
+    <el-col :span="4">
       <el-menu
         :default-active="activeIndex2"
         class="el-menu-demo"
@@ -12,19 +12,36 @@
         active-text-color="#ffd04b"
         id="menu">
         <el-menu-item index="1" v-on:click="goToIndex()">广场</el-menu-item>
-        <el-menu-item index="3"  v-on:click="goToPost()">发动态</el-menu-item>
+        <el-menu-item index="3" v-on:click="goToPost()">发动态</el-menu-item>
         <el-menu-item index="4">附近的人</el-menu-item>
       </el-menu>
     </el-col>
-    <el-col :span="8">
+    <el-col :span="14">
+      <div style="color:#409EFF;">Space</div>
+    </el-col>
+    <el-col :span="1">
       <el-avatar :size="50" :src="circleUrl" id="avatar"></el-avatar>
     </el-col>
-    <el-col :span="2">
+    <el-col :span="1" v-if="!hasLogin">
       <div class="res">
-      <span class="clickAble" v-on:click="goToLogin()">登录</span>
-      <span>|</span>
-      <span class="clickAble" v-on:click="goToRegister()">注册</span>
+        <span class="clickAble" v-on:click="goToLogin()">登录</span>
+        <span>|</span>
+        <span class="clickAble" v-on:click="goToRegister()">注册</span>
       </div>
+    </el-col>
+    <el-col v-if="hasLogin" :span="1">
+      <el-dropdown>
+  <div class="el-dropdown-link">
+    我的<i class="el-icon-arrow-down el-icon--right"></i>
+  </div>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-chat-dot-round">消息</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-user-solid">关注</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-s-custom">粉丝</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-star-on">收藏</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </el-col>
   </el-row>
 </template>
@@ -37,7 +54,8 @@ export default {
       input: '',
       activeIndex: '1',
       activeIndex2: '1',
-      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+      hasLogin: true
     }
   },
   methods: {
@@ -47,43 +65,63 @@ export default {
     goToLogin () {
       this.$router.push({path: '/login'})
     },
-    goToIndex(){
+    goToIndex () {
       this.$router.push('/')
     },
-    goToPost(){
+    goToPost () {
       this.$router.push('/post')
+    },
+    goToSelf () {
+      this.$router.push('/self')
     }
   }
 }
 </script>
 
 <style scoped>
- .title{
-   background-color: #409EFF;
- }
-  .blog{
-   text-align: left;
+  .title {
+    background-color: #409EFF;
+  }
+
+  .blog {
+    text-align: left;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     color: white;
     font-size: 22px;
     margin-left: 10px;
     font-style: italic;
   }
-  .res{
+
+  .res {
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     color: white;
     margin-top: 20px;
   }
-  #menu{
+
+  #menu {
     margin-top: 4px;
     margin-bottom: 0;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
-  #avatar{
-    margin-left: 600px;
+
+  #avatar {
     margin-top: 5px;
   }
-  .clickAble{
-   cursor: pointer;
+
+  .clickAble {
+    cursor: pointer;
+  }
+
+  .el-dropdown-link {
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    margin-top: 20px;
+    font-style: oblique;
+  }
+
+  .el-icon-arrow-down {
+    font-size: 12px;
   }
 </style>

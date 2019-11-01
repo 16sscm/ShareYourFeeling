@@ -92,7 +92,7 @@ import Cardwithonepicture from '../components/cardwithonepicture'
 import Cardwithpictures from '../components/cardwithpictures'
 export default {
   name: 'index',
-  data() {
+  data () {
     return {
       input: ''
     }

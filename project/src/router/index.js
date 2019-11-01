@@ -5,6 +5,7 @@ import login from '../pages/login'
 import index from '../pages/index'
 import details from '../pages/details'
 import post from '../pages/post'
+import self from '../pages/self'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/post',
       name: 'post',
       component: post
+    },
+    {
+      path: '/self',
+      name: 'self',
+      component: self
     }
   ]
 })

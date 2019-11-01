@@ -15,13 +15,13 @@
 </template>
 
 <script>
-  import Webheader from '../components/webheader'
-  import Webfooter from '../components/webfooter'
-  import Weibodetail from '../components/weibodetail'
-  export default {
-    name: 'details',
-    components: {Weibodetail, Webfooter, Webheader}
-  }
+import Webheader from '../components/webheader'
+import Webfooter from '../components/webfooter'
+import Weibodetail from '../components/weibodetail'
+export default {
+  name: 'details',
+  components: {Weibodetail, Webfooter, Webheader}
+}
 </script>
 
 <style scoped>
