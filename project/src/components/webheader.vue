@@ -11,8 +11,8 @@
         text-color="#fff"
         active-text-color="#ffd04b"
         id="menu">
-        <el-menu-item index="1" v-on:click="goToIndex()">主页</el-menu-item>
-        <el-menu-item index="3" >浏览</el-menu-item>
+        <el-menu-item index="1" v-on:click="goToIndex()">广场</el-menu-item>
+        <el-menu-item index="3"  v-on:click="goToPost()">发动态</el-menu-item>
         <el-menu-item index="4">附近的人</el-menu-item>
       </el-menu>
     </el-col>
@@ -49,6 +49,9 @@ export default {
     },
     goToIndex(){
       this.$router.push('/')
+    },
+    goToPost(){
+      this.$router.push('/post')
     }
   }
 }

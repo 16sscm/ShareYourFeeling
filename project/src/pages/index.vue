@@ -50,10 +50,17 @@
                   <i class="el-icon-menu"></i>
                   <span slot="title">动漫</span>
                 </el-menu-item>
+                <el-menu-item index="10">
+                  <i class="el-icon-menu"></i>
+                  <span slot="title">生活</span>
+                </el-menu-item>
               </el-menu>
         </el-aside>
         <el-main>
           <el-row id="searchme">
+            <el-col :span="5">
+              <span style="color: white">Space</span>
+            </el-col>
           <el-col :span="10" >
           <el-input v-model="input" placeholder="搜索感兴趣的内容" ></el-input>
           </el-col>
@@ -64,6 +71,11 @@
           <card-without-picture  id="test" @click.native="jumptodetail"></card-without-picture>
           <cardwithonepicture></cardwithonepicture>
           <cardwithpictures></cardwithpictures>
+          <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="1000" id="pages">
+          </el-pagination>
         </el-main>
         <el-aside width="400px"></el-aside>
       </el-container>
@@ -106,5 +118,8 @@ export default {
   }
   #searchme{
     margin-bottom: 20px;
+  }
+  #pages{
+    margin-top: 30px;
   }
 </style>
