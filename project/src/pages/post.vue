@@ -14,13 +14,13 @@
 </template>
 
 <script>
-  import Webheader from '../components/webheader'
-  import Webfooter from '../components/webfooter'
-  import Weiboform from '../components/weiboform'
-  export default {
-    name: 'post',
-    components: {Weiboform, Webfooter, Webheader}
-  }
+import Webheader from '../components/webheader'
+import Webfooter from '../components/webfooter'
+import Weiboform from '../components/weiboform'
+export default {
+  name: 'post',
+  components: {Weiboform, Webfooter, Webheader}
+}
 </script>
 
 <style scoped>

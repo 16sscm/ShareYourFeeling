@@ -7,6 +7,8 @@ import details from '../pages/details'
 import post from '../pages/post'
 import self from '../pages/self'
 import messagepage from '../pages/messagepage'
+import collect from '../pages/collect'
+import nearby from '../pages/nearby'
 
 Vue.use(Router)
 
@@ -46,6 +48,16 @@ export default new Router({
       path: '/message',
       name: 'message',
       component: messagepage
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: collect
+    },
+    {
+      path: '/nearby',
+      name: 'nearby',
+      component: nearby
     }
   ]
 })

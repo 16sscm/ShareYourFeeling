@@ -1,7 +1,7 @@
 <template>
   <el-row class="title">
     <el-col :span="3"><h1 class="blog">ShareYourFeeling</h1></el-col>
-    <el-col :span="4">
+    <el-col :span="5">
       <el-menu
         :default-active="activeIndex2"
         class="el-menu-demo"
@@ -12,11 +12,12 @@
         active-text-color="#ffd04b"
         id="menu">
         <el-menu-item index="1" v-on:click="goToIndex()">广场</el-menu-item>
-        <el-menu-item index="3" v-on:click="goToPost()">发动态</el-menu-item>
-        <el-menu-item index="4">附近的人</el-menu-item>
+        <el-menu-item index="2" v-on:click="goToPost()">发动态</el-menu-item>
+        <el-menu-item index="3" @click="goToNearby()">附近的人</el-menu-item>
+        <el-menu-item index="4">好友推荐</el-menu-item>
       </el-menu>
     </el-col>
-    <el-col :span="14">
+    <el-col :span="13">
       <div style="color:#409EFF;">Space</div>
     </el-col>
     <el-col :span="1">
@@ -37,7 +38,7 @@
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
           <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage">消息</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-star-on">收藏</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-star-on" @click.native="goToCollect">收藏</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
@@ -74,6 +75,12 @@ export default {
     },
     goToMessage () {
       this.$router.push('/message')
+    },
+    goToCollect () {
+      this.$router.push('/collect')
+    },
+    goToNearby () {
+      this.$router.push('/nearby')
     }
   }
 }
