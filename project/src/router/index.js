@@ -6,6 +6,7 @@ import index from '../pages/index'
 import details from '../pages/details'
 import post from '../pages/post'
 import self from '../pages/self'
+import messagepage from '../pages/messagepage'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/self',
       name: 'self',
       component: self
+    },
+    {
+      path: '/message',
+      name: 'message',
+      component: messagepage
     }
   ]
 })
