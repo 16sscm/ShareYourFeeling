@@ -14,7 +14,7 @@
         <el-menu-item index="1" v-on:click="goToIndex()">广场</el-menu-item>
         <el-menu-item index="2" v-on:click="goToPost()">发动态</el-menu-item>
         <el-menu-item index="3" @click="goToNearby()">附近的人</el-menu-item>
-        <el-menu-item index="4">好友推荐</el-menu-item>
+        <el-menu-item index="4" @click.native="goToFriend">好友推荐</el-menu-item>
       </el-menu>
     </el-col>
     <el-col :span="13">
@@ -39,6 +39,7 @@
           <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
           <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage">消息</el-dropdown-item>
           <el-dropdown-item icon="el-icon-star-on" @click.native="goToCollect">收藏</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-switch-button">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
@@ -54,7 +55,7 @@ export default {
       activeIndex: '1',
       activeIndex2: '1',
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
-      hasLogin: true
+      hasLogin: false
     }
   },
   methods: {
@@ -81,6 +82,9 @@ export default {
     },
     goToNearby () {
       this.$router.push('/nearby')
+    },
+    goToFriend () {
+      this.$router.push('/findfriend')
     }
   }
 }

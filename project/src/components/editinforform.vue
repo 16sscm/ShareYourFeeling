@@ -27,6 +27,12 @@
       <el-form-item label="生日">
         <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
       </el-form-item>
+      <el-form-item label="签名">
+        <el-input v-model="form.signature" class="messageInput" clearable></el-input>
+      </el-form-item>
+      <el-form-item lable="标签">
+        <Tags></Tags>
+         </el-form-item>
     </el-form>
     <el-button type="primary" icon="el-icon-edit" @click.native="Edit" v-if="editable">修改</el-button>
     <el-button type="primary" icon="el-icon-success" @click.native="Save" v-if="!editable">保存</el-button>
@@ -34,8 +40,10 @@
 </template>
 
 <script>
+import Tags from './tags'
 export default {
   name: 'editinforform',
+  components: {Tags},
   data () {
     return {
       imageUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
@@ -46,7 +54,8 @@ export default {
         sex: 'male',
         pass: '123',
         checkpass: '123',
-        date1: '2019-8-2'
+        date1: '2019-8-2',
+        signature: ''
       }
     }
   },

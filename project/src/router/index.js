@@ -9,6 +9,7 @@ import self from '../pages/self'
 import messagepage from '../pages/messagepage'
 import collect from '../pages/collect'
 import nearby from '../pages/nearby'
+import findfriend from '../pages/findfriend'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/nearby',
       name: 'nearby',
       component: nearby
+    },
+    {
+      path: '/findfriend',
+      name: 'findfriend',
+      component: findfriend
     }
   ]
 })

@@ -26,6 +26,12 @@
     <el-form-item label="生日">
         <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
       </el-form-item>
+    <el-form-item label="签名">
+      <el-input v-model="form.signature" class="messageInput" clearable></el-input>
+    </el-form-item>
+    <el-form-item label="标签">
+      <tags></tags>
+    </el-form-item>
     <el-form-item label="密码" prop="pass">
       <el-input type="password" v-model="form.pass" autocomplete="off" clearable></el-input>
     </el-form-item>
@@ -40,8 +46,10 @@
 </template>
 
 <script>
+import Tags from './tags'
 export default {
   name: 'registerform',
+  components: {Tags},
   data () {
     var validatePass = (rule, value, callback) => {
       if (value === '') {
@@ -70,7 +78,8 @@ export default {
         sex: '',
         pass: '',
         checkpass: '',
-        date1: ''
+        date1: '',
+        signature: ''
       },
       rules: {
         pass: [
