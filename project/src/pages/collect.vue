@@ -1,6 +1,4 @@
 <template>
-    <el-container>
-      <el-header><webheader></webheader></el-header>
       <el-main>
         <el-container>
           <el-aside width="300px">
@@ -29,19 +27,15 @@
           <el-aside width="300px"></el-aside>
         </el-container>
       </el-main>
-      <el-footer><webfooter></webfooter></el-footer>
-    </el-container>
 </template>
 
 <script>
-import Webheader from '../components/webheader'
-import Webfooter from '../components/webfooter'
 import Cardwithpictures from '../components/cardwithpictures'
 import CardWithoutPicture from '../components/cardwithoutpicture'
 import Cardwithonepicture from '../components/cardwithonepicture'
 export default {
   name: 'collect',
-  components: {Cardwithonepicture, CardWithoutPicture, Cardwithpictures, Webfooter, Webheader}
+  components: {Cardwithonepicture, CardWithoutPicture, Cardwithpictures}
 }
 </script>
 

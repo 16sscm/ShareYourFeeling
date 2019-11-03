@@ -17,32 +17,42 @@
         <el-menu-item index="4" @click.native="goToFriend">好友推荐</el-menu-item>
       </el-menu>
     </el-col>
-    <el-col :span="13">
-      <div style="color:#409EFF;">Space</div>
-    </el-col>
-    <el-col :span="1">
-      <el-avatar :size="50" :src="circleUrl" id="avatar"></el-avatar>
-    </el-col>
-    <el-col :span="1" v-if="!hasLogin">
-      <div class="res">
-        <span class="clickAble" v-on:click="goToLogin()">登录</span>
-        <span>|</span>
-        <span class="clickAble" v-on:click="goToRegister()">注册</span>
-      </div>
-    </el-col>
-    <el-col v-if="hasLogin" :span="1">
-      <el-dropdown>
-  <div class="el-dropdown-link">
-    我的<i class="el-icon-arrow-down el-icon--right"></i>
-  </div>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage">消息</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-star-on" @click.native="goToCollect">收藏</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-switch-button">退出</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </el-col>
+    <div v-if="!hasLogin">
+      <el-col :span="13">
+        <div style="color:#409EFF;">Space</div>
+      </el-col>
+      <el-col :span="1">
+        <el-avatar :size="50" :src="circleUrl" class="avatar"></el-avatar>
+      </el-col>
+      <el-col :span="1.5" v-if="!hasLogin">
+        <div class="res">
+          <span class="clickAble" v-on:click="goToLogin()">登录</span>
+          <span>|</span>
+          <span class="clickAble" v-on:click="goToRegister()">注册</span>
+        </div>
+      </el-col>
+    </div>
+    <div v-if="hasLogin">
+      <el-col :span="13">
+        <div style="color:#409EFF;">Space</div>
+      </el-col>
+      <el-col :span="1">
+        <el-avatar :size="50" :src="circleUrl" class="avatar"></el-avatar>
+      </el-col>
+      <el-col v-if="hasLogin" :span="1">
+        <el-dropdown>
+          <div class="el-dropdown-link">
+            我的<i class="el-icon-arrow-down el-icon--right"></i>
+          </div>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage">消息</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-star-on" @click.native="goToCollect">收藏</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-switch-button" @click.native="logout">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-col>
+    </div>
   </el-row>
 </template>
 
@@ -56,6 +66,23 @@ export default {
       activeIndex2: '1',
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       hasLogin: false
+    }
+  },
+  created () {
+    this.hasLogin = this.$cookies.get('login')
+  },
+  computed: {
+    /**
+     * @return {boolean}
+     */
+    ListenLogin () {
+      return this.$store.state.haslogin
+    }
+  },
+  watch: {
+    ListenLogin: function (old, newd) {
+     // this.hasLogin = old
+      console.log(this.hasLogin)
     }
   },
   methods: {
@@ -85,6 +112,11 @@ export default {
     },
     goToFriend () {
       this.$router.push('/findfriend')
+    },
+    logout () {
+      this.$store.commit('editLogin', false)
+      this.$cookies.set('login', false)
+     // this.$router.push('/login')
     }
   }
 }
@@ -116,7 +148,7 @@ export default {
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
 
-  #avatar {
+  .avatar {
     margin-top: 5px;
   }
 

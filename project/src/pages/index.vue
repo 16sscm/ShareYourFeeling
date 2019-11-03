@@ -1,8 +1,4 @@
 <template>
-    <el-container>
-      <el-header>
-      <webheader></webheader>
-      </el-header>
       <el-main>
       <el-container>
         <el-aside width="200px">
@@ -80,13 +76,9 @@
         <el-aside width="400px"></el-aside>
       </el-container>
       </el-main>
-      <el-footer><webfooter></webfooter></el-footer>
-    </el-container>
 </template>
 
 <script>
-import Webfooter from '../components/webfooter'
-import Webheader from '../components/webheader'
 import CardWithoutPicture from '../components/cardwithoutpicture'
 import Cardwithonepicture from '../components/cardwithonepicture'
 import Cardwithpictures from '../components/cardwithpictures'
@@ -97,7 +89,7 @@ export default {
       input: ''
     }
   },
-  components: {Cardwithpictures, Cardwithonepicture, CardWithoutPicture, Webheader, Webfooter},
+  components: {Cardwithpictures, Cardwithonepicture, CardWithoutPicture},
   methods: {
     jumptodetail () {
       this.$router.push('/detail')

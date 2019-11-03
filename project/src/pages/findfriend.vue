@@ -1,6 +1,4 @@
 <template>
-    <el-container>
-      <el-header><webheader></webheader></el-header>
       <el-container>
         <el-aside width="300px">
         </el-aside>
@@ -28,18 +26,14 @@
         </el-main>
         <el-aside width="300px"></el-aside>
       </el-container>
-      <el-footer><webfooter></webfooter></el-footer>
-    </el-container>
 </template>
 
 <script>
-import Webheader from '../components/webheader'
-import Webfooter from '../components/webfooter'
 import Tags from '../components/tags'
 import Peoplecard from '../components/peoplecard'
 export default {
   name: 'findfriend',
-  components: {Peoplecard, Tags, Webfooter, Webheader}
+  components: {Peoplecard, Tags}
 }
 </script>
 

@@ -1,6 +1,4 @@
 <template>
- <el-container>
-   <el-header> <webheader></webheader></el-header>
    <el-container>
    <el-aside width="400px"></el-aside>
    <el-main>
@@ -9,17 +7,13 @@
    </el-main>
    <el-aside width="400px"></el-aside>
    </el-container>
-   <el-footer><webfooter></webfooter></el-footer>
- </el-container>
 </template>
 
 <script>
-import Webheader from '../components/webheader'
-import Webfooter from '../components/webfooter'
 import Weiboform from '../components/weiboform'
 export default {
   name: 'post',
-  components: {Weiboform, Webfooter, Webheader}
+  components: {Weiboform}
 }
 </script>
 

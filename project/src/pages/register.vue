@@ -1,25 +1,20 @@
 <template>
-  <el-container>
-    <el-header> <webheader></webheader> </el-header>
     <el-container>
       <el-aside width="600px"></el-aside>
       <el-main>
         <span class="font">注册ShareYouFeeling</span>
         <registerform>
-        </registerform></el-main>
+        </registerform>
+      </el-main>
       <el-aside width="600px"></el-aside>
     </el-container>
-    <el-footer><webfooter></webfooter> </el-footer>
-  </el-container>
 </template>
 
 <script>
-import Webheader from '../components/webheader'
 import Registerform from '../components/registerform'
-import Webfooter from '../components/webfooter'
 export default {
   name: 'register',
-  components: {Webfooter, Registerform, Webheader}
+  components: {Registerform}
 }
 </script>
 

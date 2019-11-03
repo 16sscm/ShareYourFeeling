@@ -1,8 +1,4 @@
 <template>
-  <el-container>
-    <el-header>
-      <webheader></webheader>
-    </el-header>
     <el-container>
       <el-aside width="300px">
       </el-aside>
@@ -51,15 +47,9 @@
       </el-main>
       <el-aside width="300px"></el-aside>
     </el-container>
-    <el-footer>
-      <webfooter></webfooter>
-    </el-footer>
-  </el-container>
 </template>
 
 <script>
-import Webheader from '../components/webheader'
-import Webfooter from '../components/webfooter'
 import Selfcard from '../components/selfcard'
 import CardWithoutPicture from '../components/cardwithoutpicture'
 import Cardwithonepicture from '../components/cardwithonepicture'
@@ -75,9 +65,7 @@ export default {
     Cardwithpictures,
     Cardwithonepicture,
     CardWithoutPicture,
-    Selfcard,
-    Webfooter,
-    Webheader
+    Selfcard
   },
   data () {
     return {
