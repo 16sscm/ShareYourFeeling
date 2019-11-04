@@ -27,7 +27,7 @@ export default {
   name: 'tags',
   data () {
     return {
-      dynamicTags: ['标签一', '标签二', '标签三'],
+      dynamicTags: [],
       inputVisible: false,
       inputValue: ''
     }
@@ -35,6 +35,7 @@ export default {
   methods: {
     handleClose (tag) {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1)
+      this.$emit('update', this.dynamicTags)
     },
 
     showInput () {
@@ -51,6 +52,7 @@ export default {
       }
       this.inputVisible = false
       this.inputValue = ''
+      this.$emit('update', this.dynamicTags)
     }
   }
 }

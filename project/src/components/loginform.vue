@@ -25,8 +25,9 @@ export default {
   },
   methods: {
     loginin () {
-      this.$cookies.set('login', true)
-      this.$store.commit('editLogin', true)
+      this.$cookies.set('login', '2')
+      this.$store.commit('editLogin', '2')
+      console.log(this.$store.state.haslogin)
       this.$router.push('/')
     }
   }
@@ -35,7 +36,6 @@ export default {
 
 <style scoped>
   .fontclass{
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     margin-top: 30px;
   }
   #loginbutton{

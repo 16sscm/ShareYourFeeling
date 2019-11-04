@@ -17,14 +17,14 @@
         <el-menu-item index="4" @click.native="goToFriend">好友推荐</el-menu-item>
       </el-menu>
     </el-col>
-    <div v-if="!hasLogin">
+    <div v-if="hasLogin === '1'">
       <el-col :span="13">
         <div style="color:#409EFF;">Space</div>
       </el-col>
       <el-col :span="1">
         <el-avatar :size="50" :src="circleUrl" class="avatar"></el-avatar>
       </el-col>
-      <el-col :span="1.5" v-if="!hasLogin">
+      <el-col :span="1.5">
         <div class="res">
           <span class="clickAble" v-on:click="goToLogin()">登录</span>
           <span>|</span>
@@ -32,14 +32,14 @@
         </div>
       </el-col>
     </div>
-    <div v-if="hasLogin">
+    <div v-if="hasLogin === '2'">
       <el-col :span="13">
         <div style="color:#409EFF;">Space</div>
       </el-col>
       <el-col :span="1">
         <el-avatar :size="50" :src="circleUrl" class="avatar"></el-avatar>
       </el-col>
-      <el-col v-if="hasLogin" :span="1">
+      <el-col :span="1">
         <el-dropdown>
           <div class="el-dropdown-link">
             我的<i class="el-icon-arrow-down el-icon--right"></i>
@@ -62,14 +62,15 @@ export default {
   data () {
     return {
       input: '',
-      activeIndex: '1',
-      activeIndex2: '1',
+      activeIndex: '0',
+      activeIndex2: '0',
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
-      hasLogin: false
+      hasLogin: '2'
     }
   },
   created () {
-    this.hasLogin = this.$cookies.get('login')
+    this.hasLogin = this.$cookies.isKey('login') ? this.$cookies.get('login') : '1'
+    console.log(this.hasLogin)
   },
   computed: {
     /**
@@ -80,8 +81,8 @@ export default {
     }
   },
   watch: {
-    ListenLogin: function (old, newd) {
-     // this.hasLogin = old
+    ListenLogin: function (old) {
+      this.hasLogin = old
       console.log(this.hasLogin)
     }
   },
@@ -114,9 +115,10 @@ export default {
       this.$router.push('/findfriend')
     },
     logout () {
-      this.$store.commit('editLogin', false)
-      this.$cookies.set('login', false)
-     // this.$router.push('/login')
+      this.$store.commit('editLogin', '1')
+      console.log(this.$store.state.haslogin)
+      this.$cookies.set('login', '1')
+      this.$router.push('/login')
     }
   }
 }

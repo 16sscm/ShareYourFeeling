@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    haslogin: false
+    haslogin: 0
   },
   mutations: {
     'editLogin': function (state, loginstate) {

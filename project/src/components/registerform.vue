@@ -1,6 +1,6 @@
 <template>
   <el-form ref="form" :model="form" :rules="rules"  label-width="80px" id="form">
-     <el-form-item label="头像">
+     <el-form-item label="头像" required>
        <el-upload
          class="avatar-uploader"
          action="https://jsonplaceholder.typicode.com/posts/"
@@ -11,36 +11,36 @@
          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
        </el-upload>
      </el-form-item>
-     <el-form-item label="用户名">
+     <el-form-item label="用户名" required>
        <el-input v-model="form.name" class="messageInput" clearable></el-input>
      </el-form-item>
-    <el-form-item label="邮箱">
+    <el-form-item label="邮箱" required>
       <el-input v-model="form.mailbox" class="messageInput" clearable></el-input>
     </el-form-item>
-    <el-form-item label="性别">
+    <el-form-item label="性别" required>
       <el-select v-model="form.sex" placeholder="请选择性别"  class="fontclass">
         <el-option label="男" value="male"></el-option>
         <el-option label="女" value="female"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="生日">
+    <el-form-item label="生日" required>
         <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
       </el-form-item>
-    <el-form-item label="签名">
+    <el-form-item label="签名" required>
       <el-input v-model="form.signature" class="messageInput" clearable></el-input>
     </el-form-item>
-    <el-form-item label="标签">
-      <tags></tags>
+    <el-form-item label="标签" required>
+      <tags @update="updateTags"></tags>
     </el-form-item>
-    <el-form-item label="密码" prop="pass">
+    <el-form-item label="密码" prop="pass" required>
       <el-input type="password" v-model="form.pass" autocomplete="off" clearable></el-input>
     </el-form-item>
-    <el-form-item label="确认密码" prop="checkPass">
+    <el-form-item label="确认密码" prop="checkPass" required>
       <el-input type="password" v-model="form.checkPass" autocomplete="off" clearable></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('form')">立即注册</el-button>
-      <el-button @click="resetForm('form')">重置</el-button>
+      <el-button type="primary" @click="submitForm('form')" class="button">立即注册</el-button>
+      <el-button @click="resetForm('form')" class="button">重置</el-button>
     </el-form-item>
    </el-form>
 </template>
@@ -79,7 +79,8 @@ export default {
         pass: '',
         checkpass: '',
         date1: '',
-        signature: ''
+        signature: '',
+        tags: []
       },
       rules: {
         pass: [
@@ -110,7 +111,9 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          this.$cookies.set('login', '2')
+          this.$store.commit('editLogin', '2')
+          this.$router.push('/')
         } else {
           console.log('error submit!!')
           return false
@@ -119,6 +122,9 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
+    },
+    updateTags (data) {
+      this.form.tags = data
     }
   }
 }
@@ -163,4 +169,7 @@ export default {
     margin-right: 365px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
    }
+  .button{
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
 </style>
