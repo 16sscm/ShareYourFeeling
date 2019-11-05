@@ -3,8 +3,8 @@
     <el-form-item label="微博内容" class="item">
       <el-input type="textarea" v-model="form.desc" :rows="6"></el-input>
     </el-form-item>
-    <el-form-item label="类别" class="item">
-      <el-select v-model="form.type" placeholder="请选择微博类型">
+    <el-form-item label="类别" class="item" id="type">
+      <el-select v-model="form.type" placeholder="请选择微博类型" >
         <el-option label="无" value="无"></el-option>
         <el-option label="搞笑" value="搞笑"></el-option>
         <el-option label="社会" value="社会"></el-option>
@@ -69,5 +69,8 @@ export default {
   }
   .item{
     margin-bottom: 30px;
+  }
+  #type{
+    margin-right: 750px;
   }
 </style>

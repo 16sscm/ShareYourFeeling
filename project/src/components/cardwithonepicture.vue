@@ -1,13 +1,13 @@
 <template>
   <el-card id="card">
     <el-row>
-      <el-col span="4">
+      <el-col span="3">
         <el-image
           style="width: 100px; height: 100px"
           :src="input.url"
           fit="fill"></el-image>
       </el-col>
-      <el-col span="20">
+      <el-col span="21">
         <el-row>
           <div id="content" >{{input.content}}</div>
         </el-row>
@@ -19,7 +19,7 @@
               <span>{{input.time}}</span>
             </div>
           </el-col>
-          <el-col :span="12"></el-col>
+          <el-col :span="13"></el-col>
           <el-col :span="8">
             <div id="icons">
               <i class="el-icon-position"></i>

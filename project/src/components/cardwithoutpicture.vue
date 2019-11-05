@@ -1,25 +1,25 @@
 <template xmlns:el-col="http://www.w3.org/1999/html">
     <el-card id="card" >
       <el-row>
-      <div id="content">这是一个只有文字的微博</div>
+      <div id="content">{{input.content}}</div>
       </el-row>
       <el-row type="flex" id="writter" style="vertical-align: middle">
           <el-col :span="6">
             <div>
-            <el-avatar :size="30" :src="circleUrl" id="avatar"></el-avatar>
-              <span>Test</span>
-            <span>10月31日 21:56</span>
+            <el-avatar :size="30" :src="input.avatarurl" id="avatar"></el-avatar>
+              <span>{{input.name}}</span>
+            <span>{{input.time}}</span>
             </div>
           </el-col>
           <el-col :span="12"></el-col>
         <el-col :span="6">
         <div id="icons">
           <i class="el-icon-position"></i>
-          <span>114514</span>
+          <span>{{input.trannum}}</span>
           <i class="el-icon-chat-dot-square"></i>
-          <span>114514</span>
+          <span>{{input.chatnum}}</span>
           <i class="el-icon-thumb"></i>
-          <span>114514</span>
+          <span>{{input.zannum}}</span>
         </div>
         </el-col>
       </el-row>
@@ -36,7 +36,8 @@ export default {
     }
   },
   methods: {
-  }
+  },
+  props: ['input']
 }
 </script>
 

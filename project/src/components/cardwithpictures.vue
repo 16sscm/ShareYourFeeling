@@ -1,33 +1,28 @@
 <template>
   <el-card id="card" >
     <el-row>
-      <div id="content">这是一个有多幅图片的微博</div>
+      <div id="content">{{input.content}}</div>
     </el-row>
     <el-row>
-      <el-col :span="4"><el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image></el-col>
-      <el-col :span="4"><el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image></el-col>
-      <el-col :span="4"><el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image></el-col>
-      <el-col :span="4"><el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image></el-col>
-      <el-col :span="4"><el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image></el-col>
-      <el-col :span="4"><el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image></el-col>
+      <el-col :span="4" v-for="photourl in input.photoUrlList" :key="photourl" id="images"><el-image style="width: 180px; height: 120px" :src="photourl" :fit="fit"></el-image></el-col>
     </el-row>
     <el-row type="flex" id="writter" style="vertical-align: middle">
       <el-col :span="6">
         <div>
-          <el-avatar :size="30" :src="circleUrl" id="avatar"></el-avatar>
-          <span>Test</span>
-          <span>10月31日 21:56</span>
+          <el-avatar :size="30" :src="input.avatarurl" id="avatar"></el-avatar>
+          <span>{{input.name}}</span>
+          <span>{{input.time}}</span>
         </div>
       </el-col>
       <el-col :span="12"></el-col>
       <el-col :span="6">
         <div id="icons">
           <i class="el-icon-position"></i>
-          <span>114514</span>
+          <span>{{input.trannum}}</span>
           <i class="el-icon-chat-dot-square"></i>
-          <span>114514</span>
+          <span>{{input.chatnum}}</span>
           <i class="el-icon-thumb"></i>
-          <span>114514</span>
+          <span>{{input.zannum}}</span>
         </div>
       </el-col>
     </el-row>
@@ -40,9 +35,11 @@ export default {
   name: 'cardwithpictures',
   data () {
     return {
-      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+      fit: 'fill'
     }
-  }
+  },
+  props: ['input']
 }
 </script>
 
@@ -60,5 +57,9 @@ export default {
   }
   #card{
     margin-top: 20px;
+  }
+  #images{
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
 </style>
