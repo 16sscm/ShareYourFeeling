@@ -4,9 +4,9 @@
     <el-aside width="300px"></el-aside>
     <el-main>
       <div id="title">根据您的定位，找到附近的人如下:</div>
-      <peoplecard></peoplecard>
-      <peoplecard></peoplecard>
-      <peoplecard></peoplecard>
+      <peoplecard :input="cardInput"></peoplecard>
+      <peoplecard :input="cardInput"></peoplecard>
+      <peoplecard :input="cardInput"></peoplecard>
     </el-main>
     <el-aside width="300px"></el-aside>
     </el-container>
@@ -17,7 +17,20 @@
 import Peoplecard from '../components/peoplecard'
 export default {
   name: 'nearby',
-  components: {Peoplecard}
+  components: {Peoplecard},
+  data () {
+    return {
+      cardInput: {
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test2',
+        gNum: 102,
+        fansNum: 102,
+        weiboNum: 102,
+        signature: '这是他的签名',
+        type: 'nearby'
+      }
+    }
+  }
 }
 </script>
 

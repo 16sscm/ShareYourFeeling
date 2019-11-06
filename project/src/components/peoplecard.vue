@@ -2,20 +2,20 @@
     <el-card id="card">
       <el-row>
         <el-col :span="2">
-        <el-avatar :size="60" :src="circleUrl"></el-avatar>
+        <el-avatar :size="60" :src="input.avatarUrl"></el-avatar>
         </el-col>
         <el-col :span="4">
           <el-row>
-            <div style="text-align: left">Test</div>
+            <div style="text-align: left">{{input.name}}</div>
           </el-row>
           <el-row>
             <div style="text-align: left">
-              关注 22|粉丝 2|微博 25
+              关注 {{input.gNum}}|粉丝 {{input.fansNum}}|微博 {{input.weiboNum}}
             </div>
           </el-row>
           <el-row>
             <div style="text-align: left">
-              这是他的签名
+              {{input.signature}}
             </div>
           </el-row>
         </el-col>
@@ -24,14 +24,32 @@
             space
           </div>
         </el-col>
+        <div v-if="input.type==='guanzhu'">
         <el-col :span="4">
-          <el-row>
-          <el-button type="danger" icon="el-icon-circle-close" size="small">取关</el-button>
+          <el-row v-if="!hasguanzhu">
+            <el-button type="primary" icon="el-icon-circle-plus-outline" size="small" @click="guanzhu">关注</el-button>
           </el-row>
-          <el-row id="letter">
-          <el-button type="primary" icon="el-icon-message" size="small">私信</el-button>
+          <el-row v-if="hasguanzhu">
+            <el-button type="danger" icon="el-icon-circle-close" size="small" @click="quguan">取关</el-button>
+          </el-row>
+          <el-row class="letter">
+          <el-button type="primary" icon="el-icon-message" size="small" :disabled="!hasguanzhu">私信</el-button>
           </el-row>
         </el-col>
+        </div>
+        <div v-if="input.type==='nearby'">
+          <el-col :span="4">
+            <el-row v-if="!hasguanzhu">
+              <el-button type="primary" icon="el-icon-circle-plus-outline" size="small" @click="guanzhu">关注</el-button>
+            </el-row>
+            <el-row v-if="hasguanzhu">
+              <el-button type="danger" icon="el-icon-circle-close" size="small" @click="quguan">取关</el-button>
+            </el-row>
+            <el-row class="letter">
+              <el-button type="primary" icon="el-icon-message" size="small" :disabled="!hasguanzhu">私信</el-button>
+            </el-row>
+          </el-col>
+        </div>
       </el-row>
     </el-card>
 </template>
@@ -41,7 +59,16 @@ export default {
   name: 'peoplecard',
   data () {
     return {
-      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+      hasguanzhu: this.input.type === 'guanzhu'
+    }
+  },
+  props: ['input'],
+  methods: {
+    guanzhu () {
+      this.hasguanzhu = true
+    },
+    quguan(){
+      this.hasguanzhu = false;
     }
   }
 }
@@ -53,7 +80,7 @@ export default {
     font-style: oblique;
     margin-top: 10px;
   }
-  #letter{
+  .letter{
     margin-top: 5px;
   }
 </style>

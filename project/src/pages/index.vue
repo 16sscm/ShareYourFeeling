@@ -64,8 +64,8 @@
           <el-button type="primary" icon="el-icon-search">搜索</el-button>
           </el-col>
           </el-row>
-          <card-without-picture  id="test" @click.native="jumptodetail" :input="cardInputType2" ></card-without-picture>
-          <cardwithonepicture :input="cardInputType1"></cardwithonepicture>
+          <card-without-picture  id="test" @click.native="jumptodetail" :input="cardInputType1" ></card-without-picture>
+          <cardwithonepicture :input="cardInputType2"></cardwithonepicture>
           <cardwithpictures :input="cardInputType3"></cardwithpictures>
           <el-pagination
             background

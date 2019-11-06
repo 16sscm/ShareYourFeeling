@@ -8,7 +8,7 @@
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <img v-if="form.avatarUrl" :src="form.avatarUrl" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -30,8 +30,8 @@
       <el-form-item label="签名">
         <el-input v-model="form.signature" class="messageInput" clearable></el-input>
       </el-form-item>
-      <el-form-item lable="标签">
-        <Tags></Tags>
+      <el-form-item label="标签">
+        <Tags :input="form.tags" :closeable="closeable" @update="updateTags"></Tags>
          </el-form-item>
     </el-form>
     <el-button type="primary" icon="el-icon-edit" @click.native="Edit" v-if="editable">修改</el-button>
@@ -48,17 +48,11 @@ export default {
     return {
       imageUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       editable: true,
-      form: {
-        name: 'test',
-        mailbox: 'test@test.com',
-        sex: 'male',
-        pass: '123',
-        checkpass: '123',
-        date1: '2019-8-2',
-        signature: ''
-      }
+      form: this.input,
+      closeable: false
     }
   },
+  props: ['input'],
   methods: {
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw)
@@ -77,10 +71,15 @@ export default {
     },
     Edit () {
       this.editable = false
+      this.closeable = true
       console.log('kfkf')
     },
     Save () {
       this.editable = true
+      this.closeable = false
+    },
+    updateTags (data) {
+      this.form.tags = data
     }
   }
 }

@@ -3,7 +3,7 @@
   <el-tag
     :key="tag"
     v-for="tag in dynamicTags"
-    closable
+    :closable="closeable"
     :disable-transitions="false"
     @close="handleClose(tag)">
     {{tag}}
@@ -18,7 +18,7 @@
     @blur="handleInputConfirm"
   >
   </el-input>
-  <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+  <el-button v-else class="button-new-tag" size="small" @click="showInput" type="primary">添加标签</el-button>
   </div>
 </template>
 
@@ -27,11 +27,12 @@ export default {
   name: 'tags',
   data () {
     return {
-      dynamicTags: [],
+      dynamicTags: this.input,
       inputVisible: false,
       inputValue: ''
     }
   },
+  props: ['input', 'closeable'],
   methods: {
     handleClose (tag) {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1)
