@@ -1,5 +1,5 @@
 <template>
-  <el-card id="card" >
+  <el-card id="card" @click.native="jumptodetail">
     <el-row>
       <div id="content">{{input.content}}</div>
     </el-row>
@@ -39,7 +39,12 @@ export default {
       fit: 'fill'
     }
   },
-  props: ['input']
+  props: ['input'],
+  methods: {
+    jumptodetail () {
+      this.$router.push('/detail')
+    }
+  }
 }
 </script>
 
@@ -57,6 +62,7 @@ export default {
   }
   #card{
     margin-top: 20px;
+    cursor: pointer;
   }
   #images{
     margin-top: 10px;

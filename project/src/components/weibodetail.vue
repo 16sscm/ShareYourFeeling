@@ -41,13 +41,17 @@
       </div>
     </el-row>
     <el-row id="infor">
-      <el-col :span="6">
+      <el-col :span="6" v-if="hasshoucang === '0'" class="shoucang" @click.native="mark()">
         <i class="el-icon-star-off"></i>
         <span>收藏</span>
       </el-col>
+      <el-col :span="6" v-if="hasshoucang === '1'" class="shoucang" @click.native="unmark()">
+        <i class="el-icon-star-on"></i>
+        <span >取消收藏</span>
+      </el-col>
       <el-col :span="6">
         <i class="el-icon-position"></i>
-        <span>{{info.zhuanNum}}</span>
+        <span>{{info.chuanNum}}</span>
       </el-col>
       <el-col :span="6">
         <i class="el-icon-chat-dot-square"></i>
@@ -60,31 +64,22 @@
       </el-col>
     </el-row>
     <el-divider></el-divider>
-    <el-row id="comment">
-      <el-col :span="6">
-        <span style="color: white">keepSpace</span>
-      </el-col>
-      <el-col :span="10">
-      <el-input v-model="comment" placeholder="请输入评论"></el-input>
-      </el-col>
-      <el-col :span="2">
-        <el-button type="primary">评论</el-button>
-      </el-col>
-    </el-row>
-    <el-row class="site">
+    <div v-for="comment in comments" :key="comment">
+    <el-row>
       <el-col :span="4">
         <span style="color: white">keepSpace</span>
       </el-col>
       <el-col :span="1.5">
-        <el-avatar :size="30" :src="circleUrl"></el-avatar>
+        <el-avatar :size="30" :src="comment.avatarUrl"></el-avatar>
       </el-col>
       <el-col :span="3" >
-        <el-row><div class="infor">Test</div></el-row>
-        <el-row><div class="infor">10月31日 12:56</div></el-row>
+        <el-row><div class="infor">{{comment.name}}</div></el-row>
+        <el-row><div class="infor">{{comment.time}}</div></el-row>
       </el-col>
       <el-col :span="12">
-        <div class="com">这是一条评论</div>
+        <div class="com">{{comment.content}}</div>
       </el-col>
+      <el-col :span="3"><el-button type="danger" icon="el-icon-circle-close" size="small" >删除</el-button></el-col>
     </el-row>
     <el-row>
       <el-col :span="4">
@@ -94,52 +89,7 @@
         <el-divider></el-divider>
       </el-col>
     </el-row>
-    <el-row>
-      <el-col :span="4">
-        <span style="color: white">keepSpace</span>
-      </el-col>
-      <el-col :span="1.5">
-        <el-avatar :size="30" :src="circleUrl"></el-avatar>
-      </el-col>
-      <el-col :span="3" >
-        <el-row><div class="infor">Test</div></el-row>
-        <el-row><div class="infor">10月31日 12:56</div></el-row>
-      </el-col>
-      <el-col :span="12">
-        <div class="com">这是一条评论</div>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="4">
-        <span style="color: white">keepSpace</span>
-      </el-col>
-      <el-col :span="16">
-        <el-divider></el-divider>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="4">
-        <span style="color: white">keepSpace</span>
-      </el-col>
-      <el-col :span="1.5">
-        <el-avatar :size="30" :src="circleUrl"></el-avatar>
-      </el-col>
-      <el-col :span="3" >
-        <el-row><div class="infor">Test</div></el-row>
-        <el-row><div class="infor">10月31日 12:56</div></el-row>
-      </el-col>
-      <el-col :span="12">
-        <div class="com">这是一条评论</div>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="4">
-        <span style="color: white">keepSpace</span>
-      </el-col>
-      <el-col :span="16">
-        <el-divider></el-divider>
-      </el-col>
-    </el-row>
+    </div>
     <el-pagination
       background
       layout="prev, pager, next"
@@ -160,9 +110,42 @@ export default {
         time: '10月31日 21:59',
         hasguanzhu: true,
         content: '这是微博内容',
-        imageUrls: ['', '', '', '', '', '']
+        imageUrls: ['', '', '', '', '', ''],
+        chuanNum: 114514,
+        chatNum: 114514,
+        zanNum: 114514
       },
-      fit: 'fill'
+      comments: [
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          name: 'Test',
+          content: '这是一条评论',
+          time: '10月31日 21:36'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          name: 'Test',
+          content: '这是一条评论',
+          time: '10月31日 21:36'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          name: 'Test',
+          content: '这是一条评论',
+          time: '10月31日 21:36'
+        }
+      ],
+      fit: 'fill',
+      hasshoucang: '0'
+    }
+  },
+  methods: {
+    mark () {
+      this.hasshoucang = '1'
+      console.log('jfekjf')
+    },
+    unmark () {
+      this.hasshoucang = '0'
     }
   }
 }
@@ -200,5 +183,8 @@ export default {
     text-align: left;
   }
   .site{
+  }
+  .shoucang{
+    cursor: pointer;
   }
 </style>

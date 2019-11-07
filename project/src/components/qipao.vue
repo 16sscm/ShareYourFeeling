@@ -1,26 +1,28 @@
 <template>
   <div>
-    <el-row>
+    <el-row v-if="input.type==='right'">
       <el-col :span="12">
         <div style="color:  #e7e7e7">space</div>
       </el-col>
       <el-col :span="10">
-      <div class="right">
-        <span>465464465454646fhkejhfkjef5hfkejfhkjehfegrgsgerg465465465</span>
-      </div>
+        <div class="right">
+          <span>{{input.content}}</span>
+        </div>
       </el-col>
-    <el-col :span="2">
-      <el-avatar :size="40" :src="circleUrl"></el-avatar>
-    </el-col>
+      <el-col :span="2">
+        <el-avatar :size="50" :src="input.avatarUrl"></el-avatar>
+      </el-col>
     </el-row>
-    <el-col :span="2">
-      <el-avatar :size="40" :src="circleUrl"></el-avatar>
-    </el-col>
-    <el-col :span="10">
-    <div class="left">
-      <span>fjlekjfelkjflekjfklejfiefjflekjfalejfiefnfjejfoijfjelffjjeflje4654fkehfkje65465</span>
-    </div>
-    </el-col>
+    <el-row v-if="input.type==='left'">
+      <el-col :span="2">
+        <el-avatar :size="50" :src="input.avatarUrl"></el-avatar>
+      </el-col>
+      <el-col :span="10">
+        <div class="left">
+          <span>{{input.content}}</span>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -31,7 +33,8 @@ export default {
     return {
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
     }
-  }
+  },
+  props: ['input']
 }
 </script>
 
@@ -43,10 +46,9 @@ export default {
     border-radius: 4px;
     margin: 10px 0 10px 10px;
     position: relative;
-    max-width: 400px;
+    max-width: 300px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    font-size: 15px;
-    text-align: left;
+    font-size: 18px;
     word-wrap: break-word;
     white-space: normal;
   }
@@ -67,10 +69,9 @@ export default {
     border-radius: 4px;
     margin: 10px 0 10px 10px;
     position: relative;
-    max-width: 400px;
+    max-width: 300px;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    font-size: 15px;
-    text-align: left;
+    font-size: 18px;
     word-wrap: break-word;
     white-space: normal;
   }
@@ -82,5 +83,11 @@ export default {
     position: absolute;
     top: 6px;
     left: -16px;
+  }
+  .right{
+    text-align: right;
+  }
+  .left{
+    text-align: left;
   }
 </style>

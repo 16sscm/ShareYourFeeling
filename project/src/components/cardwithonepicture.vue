@@ -1,5 +1,5 @@
 <template>
-  <el-card id="card">
+  <el-card id="card" @click.native = jumptodetail>
     <el-row>
       <el-col span="3">
         <el-image
@@ -44,7 +44,12 @@ export default {
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
     }
   },
-  props: ['input']
+  props: ['input'],
+  methods: {
+    jumptodetail () {
+      this.$router.push('/detail')
+    }
+  }
 }
 </script>
 
@@ -64,5 +69,6 @@ export default {
 
   #card{
     margin-top: 20px;
+    cursor: pointer;
   }
 </style>

@@ -17,119 +17,43 @@
         </el-input>
       </el-row>
       <div class="peoplelist">
+        <div v-for="people in peopleList" :key="people">
         <div class="people">
           <el-row>
             <el-row class="people">
               <el-col :span="4" class="avatar">
-                <el-avatar :size="50" :src="circleUrl"></el-avatar>
+                <el-avatar :size="50" :src="people.avatarUrl"></el-avatar>
               </el-col>
               <el-col :span="17">
                 <el-row class="name">
-                  <div class="infor">Test</div>
+                  <div class="infor">{{people.name}}</div>
                 </el-row>
                 <el-row>
-                  <div class="infor">这是一条长长2222222222222222消息..</div>
+                  <div class="infor">{{people.newMessage}}</div>
                 </el-row>
               </el-col>
               <el-col :span="3">
-                <div class="time">10-21</div>
+                <el-row>
+                  <div class="time">{{people.time}}</div>
+                </el-row>
+                <el-row>
+                  <el-badge :value="people.newNum" class="item">
+                  </el-badge>
+                </el-row>
               </el-col>
             </el-row>
           </el-row>
         </div>
         <hr>
-        <div class="people">
-          <el-row>
-            <el-row class="people">
-              <el-col :span="4" class="avatar">
-                <el-avatar :size="50" :src="circleUrl"></el-avatar>
-              </el-col>
-              <el-col :span="17">
-                <el-row class="name">
-                  <div class="infor">Test</div>
-                </el-row>
-                <el-row>
-                  <div class="infor">这是一条长长2222222222222222消息..</div>
-                </el-row>
-              </el-col>
-              <el-col :span="3">
-                <div class="time">10-21</div>
-              </el-col>
-            </el-row>
-          </el-row>
         </div>
-        <hr>
-        <div class="people">
-          <el-row>
-            <el-row class="people">
-              <el-col :span="4" class="avatar">
-                <el-avatar :size="50" :src="circleUrl"></el-avatar>
-              </el-col>
-              <el-col :span="17">
-                <el-row class="name">
-                  <div class="infor">Test</div>
-                </el-row>
-                <el-row>
-                  <div class="infor">这是一条长长2222222222222222消息..</div>
-                </el-row>
-              </el-col>
-              <el-col :span="3">
-                <div class="time">10-21</div>
-              </el-col>
-            </el-row>
-          </el-row>
-        </div>
-        <hr>
-        <div class="people">
-          <el-row>
-            <el-row class="people">
-              <el-col :span="4" class="avatar">
-                <el-avatar :size="50" :src="circleUrl"></el-avatar>
-              </el-col>
-              <el-col :span="17">
-                <el-row class="name">
-                  <div class="infor">Test</div>
-                </el-row>
-                <el-row>
-                  <div class="infor">这是一条长长2222222222222222消息..</div>
-                </el-row>
-              </el-col>
-              <el-col :span="3">
-                <div class="time">10-21</div>
-              </el-col>
-            </el-row>
-          </el-row>
-        </div>
-        <hr>
-        <div class="people">
-          <el-row>
-            <el-row class="people">
-              <el-col :span="4" class="avatar">
-                <el-avatar :size="50" :src="circleUrl"></el-avatar>
-              </el-col>
-              <el-col :span="17">
-                <el-row class="name">
-                  <div class="infor">Test</div>
-                </el-row>
-                <el-row>
-                  <div class="infor">这是一条长长2222222222222222消息..</div>
-                </el-row>
-              </el-col>
-              <el-col :span="3">
-                <div class="time">10-21</div>
-              </el-col>
-            </el-row>
-          </el-row>
-        </div>
-        <hr>
       </div>
     </el-aside>
     <el-main id="chatBox">
      <el-row>
-       <div id="chatBoxname">Test</div>
+       <div id="chatBoxname">{{parnerName}}</div>
      </el-row>
       <div id="messagebox">
-        <qipao></qipao>
+        <qipao v-for="chat in chatList" :key="chat" :input="chat"></qipao>
       </div>
       <el-input
         type="textarea"
@@ -150,7 +74,109 @@ export default {
     return {
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       input: '',
-      textarea: ''
+      textarea: '',
+      peopleList: [{
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test',
+        newMessage: '这是最新的一条消息',
+        time: '10-21',
+        newNum: 8
+      },
+      {
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test',
+        newMessage: '这是最新的一条消息',
+        time: '10-21',
+        newNum: 12
+      },
+      {
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test',
+        newMessage: '这是最新的一条消息',
+        time: '10-21',
+        newNum: 10
+      },
+      {
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test',
+        newMessage: '这是最新的一条消息',
+        time: '10-21',
+        newNum: 9
+      }
+      ],
+      chatList: [
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息用来测试换行以及显示效果等'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这是右边的第一条消息用来测试换行及显示效果等'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这是右边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这是右边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这是右边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这是右边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'left',
+          content: '这是左边的第一条消息'
+        },
+        {
+          avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          type: 'right',
+          content: '这是右边的第一条消息'
+        }
+      ],
+      parnerName: 'Test'
     }
   }
 }
@@ -206,6 +232,7 @@ export default {
     background: #409EFF;
     color: white;
     height: 700px;
+    overflow: auto;
   }
 
   hr {
@@ -219,8 +246,13 @@ export default {
     text-align: left;
     font-size: 32px;
     color: #a9a9a9;
+    margin-bottom: 30px;
   }
   #messagebox{
-    height: 650px;
+    height: 600px;
+    overflow: auto;
+  }
+  .item{
+    margin-top: 10px;
   }
 </style>

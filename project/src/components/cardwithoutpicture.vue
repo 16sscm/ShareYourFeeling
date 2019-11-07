@@ -1,5 +1,5 @@
 <template xmlns:el-col="http://www.w3.org/1999/html">
-    <el-card id="card" >
+    <el-card id="card"  @click.native="jumptodetail">
       <el-row>
       <div id="content">{{input.content}}</div>
       </el-row>
@@ -36,6 +36,9 @@ export default {
     }
   },
   methods: {
+    jumptodetail () {
+      this.$router.push('/detail')
+    }
   },
   props: ['input']
 }
@@ -55,5 +58,6 @@ export default {
   }
   #card{
     margin-top: 20px;
-  }
+    cursor: pointer;
+    }
 </style>
