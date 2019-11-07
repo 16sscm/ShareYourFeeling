@@ -2,13 +2,14 @@
   <el-card id="card">
     <el-row id="writter">
       <el-col :span="1.6">
-      <el-avatar :size="50" :src="circleUrl" id="avatar" style="vertical-align:middle"></el-avatar>
+      <el-avatar :size="50" :src="info.avatarUrl" id="avatar" style="vertical-align:middle"></el-avatar>
       </el-col>
       <el-col :span="4" id="name">
-        <el-row><div class="infor">Test</div></el-row>
-        <el-row><div class="infor">10月31日 12:56</div></el-row>
+        <el-row><div class="infor">{{info.name}}</div></el-row>
+        <el-row><div class="infor">{{info.time}}</div></el-row>
       </el-col>
-      <el-col :span="2"><el-button type="primary" icon="el-icon-circle-plus-outline">关注</el-button></el-col>
+      <el-col :span="2" v-if="!info.hasguanzhu"><el-button type="primary" icon="el-icon-circle-plus-outline">关注</el-button></el-col>
+      <el-col :span="2" v-if="info.hasguanzhu"><el-button type="danger" icon="el-icon-circle-close">取关</el-button></el-col>
       <el-col :span="14">
         <span style="color: white">space</span>
       </el-col>
@@ -17,48 +18,22 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="10">
-        <div class="content">这是一行内容</div>
+      <el-col :span="24">
+        <div class="content">{{info.content}}</div>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row v-if="info.imageUrls.length>0">
       <div class="demo-image">
         <div class="block">
           <el-image
             style="width: 600px; height: 400px"
-            :src="url"
+            :src="info.imageUrls[0]"
             :fit="fit"></el-image>
         </div>
-        <div class="smallpic">
+        <div class="smallpic" v-if="info.imageUrls.length>1">
           <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
-            style="width: 75px; height: 50px"
-            :src="url"
-            :fit="fit" class="small-image"></el-image>
-          <el-image
+            v-for="url in info.imageUrls"
+            :key = "url"
             style="width: 75px; height: 50px"
             :src="url"
             :fit="fit" class="small-image"></el-image>
@@ -72,15 +47,16 @@
       </el-col>
       <el-col :span="6">
         <i class="el-icon-position"></i>
-        <span>114514</span>
+        <span>{{info.zhuanNum}}</span>
       </el-col>
       <el-col :span="6">
         <i class="el-icon-chat-dot-square"></i>
-        <span>114514</span>
+        <span>{{info.chatNum}}</span>
       </el-col>
       <el-col :span="6">
         <i class="el-icon-thumb"></i>
-        <span>114514</span>
+        <span>{{info.zanNum
+          }}</span>
       </el-col>
     </el-row>
     <el-divider></el-divider>
@@ -177,8 +153,16 @@ export default {
   name: 'weibodetail',
   data () {
     return {
-      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
-      comment: ''
+      comment: '',
+      info: {
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test',
+        time: '10月31日 21:59',
+        hasguanzhu: true,
+        content: '这是微博内容',
+        imageUrls: ['', '', '', '', '', '']
+      },
+      fit: 'fill'
     }
   }
 }
@@ -202,7 +186,7 @@ export default {
   }
   .small-image{
     margin-left: 0;
-    margin-right: 0;
+    margin-right: 5px;
     padding:0;
   }
   #infor{

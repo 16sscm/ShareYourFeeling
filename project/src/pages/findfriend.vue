@@ -44,7 +44,8 @@ export default {
         weiboNum: 102,
         signature: '这是他的签名',
         type: 'nearby',
-        tags: []
+        tags: [],
+        hasgz: false
       }
     }
   },

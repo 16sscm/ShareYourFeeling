@@ -35,9 +35,9 @@
           <peoplecard :input="cardInput"></peoplecard>
         </div>
         <div v-if="currentIndex==='4'">
-          <peoplecard></peoplecard>
-          <Peoplecard></Peoplecard>
-          <peoplecard></peoplecard>
+          <peoplecard :input="cardInput2"></peoplecard>
+          <peoplecard :input="cardInput2"></peoplecard>
+          <peoplecard :input="cardInput2"></peoplecard>
         </div>
         <el-pagination
           background
@@ -125,7 +125,19 @@ export default {
         weiboNum: 102,
         signature: '这是他的签名',
         type: 'guanzhu',
-        tags: []
+        tags: [],
+        hasgz: true
+      },
+      cardInput2: {
+        avatarUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        name: 'Test2',
+        gNum: 102,
+        fansNum: 102,
+        weiboNum: 102,
+        signature: '这是他的签名',
+        type: 'fans',
+        tags: [],
+        hasgz: true
       }
     }
   },

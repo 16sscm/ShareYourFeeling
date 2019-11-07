@@ -50,6 +50,19 @@
             </el-row>
           </el-col>
         </div>
+        <div v-if="input.type==='fans'">
+          <el-col :span="4">
+            <el-row v-if="!hasguanzhu">
+              <el-button type="primary" icon="el-icon-circle-plus-outline" size="small" @click="guanzhu">关注</el-button>
+            </el-row>
+            <el-row v-if="hasguanzhu">
+              <el-button type="danger" icon="el-icon-circle-close" size="small" @click="quguan">取关</el-button>
+            </el-row>
+            <el-row class="letter">
+              <el-button type="primary" icon="el-icon-message" size="small" >私信</el-button>
+            </el-row>
+          </el-col>
+        </div>
       </el-row>
     </el-card>
 </template>
@@ -59,7 +72,7 @@ export default {
   name: 'peoplecard',
   data () {
     return {
-      hasguanzhu: this.input.type === 'guanzhu'
+      hasguanzhu: this.input.hasgz
     }
   },
   props: ['input'],
@@ -67,8 +80,8 @@ export default {
     guanzhu () {
       this.hasguanzhu = true
     },
-    quguan(){
-      this.hasguanzhu = false;
+    quguan () {
+      this.hasguanzhu = false
     }
   }
 }
