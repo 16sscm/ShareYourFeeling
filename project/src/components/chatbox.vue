@@ -17,10 +17,10 @@
         </el-input>
       </el-row>
       <div class="peoplelist">
-        <div v-for="people in peopleList" :key="people">
+        <div v-for="(people,index) in peopleList" :key="people" :class="{choose:index===chooseIndex}" @click="chooseMe(index)">
         <div class="people">
           <el-row>
-            <el-row class="people">
+            <el-row class="people" >
               <el-col :span="4" class="avatar">
                 <el-avatar :size="50" :src="people.avatarUrl"></el-avatar>
               </el-col>
@@ -176,7 +176,13 @@ export default {
           content: '这是右边的第一条消息'
         }
       ],
-      parnerName: 'Test'
+      parnerName: 'Test',
+      chooseIndex: -1
+    }
+  },
+  methods: {
+    chooseMe (index) {
+      this.chooseIndex = index
     }
   }
 }
@@ -202,7 +208,6 @@ export default {
   }
 
   .people {
-    background: #409EFF;
     color: white;
   }
 
@@ -238,6 +243,7 @@ export default {
   hr {
     color: white;
     width: 90%;
+    margin-bottom: 0;
   }
   #chatBox{
     background: #e7e7e7;
@@ -254,5 +260,8 @@ export default {
   }
   .item{
     margin-top: 10px;
+  }
+  .choose{
+    background: #0275ff;
   }
 </style>

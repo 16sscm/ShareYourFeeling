@@ -46,7 +46,7 @@
           </div>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage">消息</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage"><el-badge value="12>" 消息</el-dropdown-item>
             <el-dropdown-item icon="el-icon-star-on" @click.native="goToCollect">收藏</el-dropdown-item>
             <el-dropdown-item icon="el-icon-switch-button" @click.native="logout">退出</el-dropdown-item>
           </el-dropdown-menu>

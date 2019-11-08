@@ -2,7 +2,7 @@
     <el-card id="card">
       <el-row>
         <el-col :span="2">
-        <el-avatar :size="60" :src="input.avatarUrl"></el-avatar>
+        <el-avatar :size="60" :src="input.avatarUrl" style="cursor: pointer;" @click.native="jumpToSelf"></el-avatar>
         </el-col>
         <el-col :span="4">
           <el-row>
@@ -82,6 +82,9 @@ export default {
     },
     quguan () {
       this.hasguanzhu = false
+    },
+    jumpToSelf () {
+      this.$router.push('/self')
     }
   }
 }

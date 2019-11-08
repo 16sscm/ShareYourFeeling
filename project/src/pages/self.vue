@@ -3,7 +3,7 @@
       <el-aside width="300px">
       </el-aside>
       <el-main>
-        <selfcard :input="selfCardInput"></selfcard>
+        <selfcard :input="selfCardInput" ></selfcard>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
           <el-menu-item index="1">我的动态</el-menu-item>
           <el-menu-item index="2">我的资料</el-menu-item>
@@ -125,7 +125,6 @@ export default {
         weiboNum: 102,
         signature: '这是他的签名',
         type: 'guanzhu',
-        tags: [],
         hasgz: true
       },
       cardInput2: {
@@ -136,7 +135,6 @@ export default {
         weiboNum: 102,
         signature: '这是他的签名',
         type: 'fans',
-        tags: [],
         hasgz: true
       }
     }

@@ -30,7 +30,7 @@
       <el-input v-model="form.signature" class="messageInput" clearable></el-input>
     </el-form-item>
     <el-form-item label="标签" required>
-      <tags @update="updateTags"></tags>
+      <tags @update="updateTags" :closeable="closeable" :input="form.tags"></tags>
     </el-form-item>
     <el-form-item label="密码" prop="pass" required>
       <el-input type="password" v-model="form.pass" autocomplete="off" clearable></el-input>
@@ -72,6 +72,7 @@ export default {
     }
     return {
       imageUrl: '',
+      closeable: true,
       form: {
         name: '',
         mailbox: '',

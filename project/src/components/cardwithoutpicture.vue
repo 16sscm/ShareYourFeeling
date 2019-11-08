@@ -1,10 +1,17 @@
 <template xmlns:el-col="http://www.w3.org/1999/html">
-    <el-card id="card"  @click.native="jumptodetail">
+    <el-card id="card" >
       <el-row>
-      <div id="content">{{input.content}}</div>
+        <el-col :span="20">
+        <div id="content" @click="jumptodetail">{{input.content}}</div>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
+          <el-button type="danger" icon="el-icon-star-on" size="mini" @click.native="unmark" v-if="hasshoucang">取消收藏</el-button>
+          <el-button type="primary" icon="el-icon-star-off" size="mini" @click.native="mark" v-if="!hasshoucang">收藏微博</el-button>
+        </el-col>
       </el-row>
       <el-row type="flex" id="writter" style="vertical-align: middle">
-          <el-col :span="6">
+          <el-col :span="6" @click.native="jumpToSelf">
             <div>
             <el-avatar :size="30" :src="input.avatarurl" id="avatar"></el-avatar>
               <span>{{input.name}}</span>
@@ -13,7 +20,7 @@
           </el-col>
           <el-col :span="12"></el-col>
         <el-col :span="6">
-        <div id="icons">
+        <div id="icons" @click="jumptodetail">
           <i class="el-icon-position"></i>
           <span>{{input.trannum}}</span>
           <i class="el-icon-chat-dot-square"></i>
@@ -32,12 +39,22 @@ export default {
   name: 'cardWithoutPicture',
   data () {
     return {
-      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+      circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+      hasshoucang: true
     }
   },
   methods: {
     jumptodetail () {
       this.$router.push('/detail')
+    },
+    mark () {
+      this.hasshoucang = true
+    },
+    unmark () {
+      this.hasshoucang = false
+    },
+    jumpToSelf () {
+      this.$router.push('/self')
     }
   },
   props: ['input']
@@ -55,6 +72,7 @@ export default {
   #writter{
     font-size: 20px;
     margin-top: 20px;
+    font-style: oblique;
   }
   #card{
     margin-top: 20px;

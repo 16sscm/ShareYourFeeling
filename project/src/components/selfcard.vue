@@ -1,6 +1,21 @@
 <template>
   <el-card id="card" :style="{backgroundImage: 'url(' +input.backgroundUrl+ ')'}" >
     <el-row>
+      <el-col :span="2">
+      <el-upload
+        class="upload-demo"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :before-remove="beforeRemove"
+        :limit="3"
+        :on-exceed="handleExceed"
+        :file-list="fileList">
+        <el-button size="small" type="primary">修改背景图</el-button>
+      </el-upload>
+      </el-col>
+    </el-row>
+    <el-row>
       <el-avatar :size="100" :src="input.avatarUrl" id="head"></el-avatar>
     </el-row>
     <el-row>
@@ -39,4 +54,3 @@ export default {
     margin-bottom: 15px;
   }
 </style>
-

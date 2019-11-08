@@ -7,7 +7,7 @@
             <div id="tagtitle">请在下方添加期望的标签:</div>
            </el-row>
           <el-row>
-          <tags @update="updateTags"></tags>
+          <tags @update="updateTags" :input="tags" :closeable="closeable"></tags>
           </el-row>
           <el-row>
             <div id="find">
@@ -46,7 +46,9 @@ export default {
         type: 'nearby',
         tags: [],
         hasgz: false
-      }
+      },
+      tags: [],
+      closeable: true
     }
   },
   methods: {
