@@ -2,7 +2,7 @@
   <el-card id="card">
     <el-row>
       <el-col :span="20"  @click.native="jumptodetail">
-      <div id="content">{{input.content}}</div>
+      <div id="content" style="cursor: pointer">{{input.content}}</div>
       </el-col>
       <el-col :span="4">
         <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
@@ -10,19 +10,19 @@
         <el-button type="primary" icon="el-icon-star-off" size="mini" @click.native="mark" v-if="!hasshoucang">收藏微博</el-button>
       </el-col>
     </el-row>
-    <el-row  @click.native="jumptodetail">
+    <el-row  @click.native="jumptodetail" style="cursor: pointer">
       <el-col :span="4" v-for="photourl in input.photoUrlList" :key="photourl" id="images"><el-image style="width: 180px; height: 120px" :src="photourl" :fit="fit"></el-image></el-col>
     </el-row>
-    <el-row type="flex" id="writter" style="vertical-align: middle">
-      <el-col :span="6" @click.native="jumpToSelf">
+    <el-row  id="writter" style="vertical-align: middle">
+      <el-col :span="6" @click.native="jumpToSelf" style="cursor: pointer">
         <div>
           <el-avatar :size="30" :src="input.avatarurl" id="avatar"></el-avatar>
           <span>{{input.name}}</span>
           <span>{{input.time}}</span>
         </div>
       </el-col>
-      <el-col :span="12"></el-col>
-      <el-col :span="6"  @click.native="jumptodetail">
+      <el-col :span="12" style="color: white">emmmm</el-col>
+      <el-col :span="6"  @click.native="jumptodetail" style="cursor: pointer">
         <div id="icons">
           <i class="el-icon-position"></i>
           <span>{{input.trannum}}</span>
@@ -59,7 +59,7 @@ export default {
       this.hasshoucang = false
     },
     jumpToSelf () {
-      this.$router.push('/self')
+      this.$router.push({path: '/self', query: {isme: '0'}})
     }
   }
 }
@@ -80,7 +80,6 @@ export default {
   }
   #card{
     margin-top: 20px;
-    cursor: pointer;
   }
   #images{
     margin-top: 10px;

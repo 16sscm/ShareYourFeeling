@@ -1,7 +1,7 @@
 <template>
   <el-card id="card">
     <el-row>
-      <el-col :span="3"  @click.native = jumptodetail>
+      <el-col :span="3"  @click.native = jumptodetail style="cursor: pointer">
         <el-image
           style="width: 100px; height: 100px"
           :src="input.url"
@@ -9,7 +9,7 @@
       </el-col>
       <el-col :span="21">
         <el-row>
-          <el-col :span="19"  @click.native = jumptodetail>
+          <el-col :span="19"  @click.native = jumptodetail style="cursor: pointer">
           <div id="content" >{{input.content}}</div>
           </el-col>
           <el-col :span="5">
@@ -18,17 +18,17 @@
             <el-button type="primary" icon="el-icon-star-off" size="mini" @click.native="mark" v-if="!hasshoucang">收藏微博</el-button>
           </el-col>
         </el-row>
-        <el-row type="flex" id="writter" style="vertical-align: middle" >
-          <el-col :span="6" @click.native="jumpToSelf">
+        <el-row id="writter" style="vertical-align: middle" >
+          <el-col :span="6" @click.native="jumpToSelf" style="cursor: pointer">
             <div>
               <el-avatar :size="30" :src="input.avatarurl" id="avatar"></el-avatar>
               <span>{{input.name}}</span>
               <span>{{input.time}}</span>
             </div>
           </el-col>
-          <el-col :span="13"></el-col>
+          <el-col :span="10" style="color: white">just for space</el-col>
           <el-col :span="8">
-            <div id="icons"  @click = jumptodetail>
+            <div id="icons"  @click = jumptodetail style="cursor: pointer">
               <i class="el-icon-position"></i>
               <span>{{input.trannum}}</span>
               <i class="el-icon-chat-dot-square"></i>
@@ -64,7 +64,7 @@ export default {
       this.hasshoucang = false
     },
     jumpToSelf () {
-      this.$router.push('/self')
+      this.$router.push({path: '/self', query: {isme: '0'}})
     }
   }
 }
@@ -87,6 +87,5 @@ export default {
 
   #card{
     margin-top: 20px;
-    cursor: pointer;
   }
 </style>

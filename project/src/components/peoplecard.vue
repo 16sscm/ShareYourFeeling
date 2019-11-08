@@ -84,7 +84,7 @@ export default {
       this.hasguanzhu = false
     },
     jumpToSelf () {
-      this.$router.push('/self')
+      this.$router.push({path: '/self', query: {isme: '0'}})
     }
   }
 }

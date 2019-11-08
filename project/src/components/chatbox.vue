@@ -3,7 +3,7 @@
     <el-aside width="400px" >
       <el-row id="user">
         <el-col :span="4" id="userava">
-          <el-avatar :size="50" :src="circleUrl"></el-avatar>
+          <el-avatar :size="50" :src="circleUrl" @click.native="jumpToSelf" style="cursor: pointer"></el-avatar>
         </el-col>
         <el-col :span="4" id="username">
           <div>Test</div>
@@ -17,12 +17,12 @@
         </el-input>
       </el-row>
       <div class="peoplelist">
-        <div v-for="(people,index) in peopleList" :key="people" :class="{choose:index===chooseIndex}" @click="chooseMe(index)">
+        <div v-for="(people,index) in peopleList" :key="people" :class="{choose:index===chooseIndex}" @click="chooseMe(index)" style="cursor: pointer">
         <div class="people">
           <el-row>
             <el-row class="people" >
               <el-col :span="4" class="avatar">
-                <el-avatar :size="50" :src="people.avatarUrl"></el-avatar>
+                <el-avatar :size="50" :src="people.avatarUrl" @click.native="jumpToOther"></el-avatar>
               </el-col>
               <el-col :span="17">
                 <el-row class="name">
@@ -183,6 +183,12 @@ export default {
   methods: {
     chooseMe (index) {
       this.chooseIndex = index
+    },
+    jumpToOther () {
+      this.$router.push({path: '/self', query: {isme: '0'}})
+    },
+    jumpToSelf () {
+      this.$router.push({path: '/self', query: {isme: '1'}})
     }
   }
 }
@@ -262,6 +268,6 @@ export default {
     margin-top: 10px;
   }
   .choose{
-    background: #0275ff;
+    background: #2d8ce1;
   }
 </style>

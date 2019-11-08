@@ -2,7 +2,7 @@
   <div id="app">
     <el-container>
       <el-header><webheader></webheader></el-header>
-      <router-view/>
+      <router-view v-if="isRouterAlive"></router-view>
       <el-footer><webfooter></webfooter></el-footer>
     </el-container>
   </div>
@@ -13,7 +13,25 @@ import Webheader from './components/webheader'
 import Webfooter from './components/webfooter'
 export default {
   name: 'App',
-  components: {Webfooter, Webheader}
+  components: {Webfooter, Webheader},
+  provide () {
+    return {
+      reload: this.reload
+    }
+  },
+  data () {
+    return {
+      isRouterAlive: true
+    }
+  },
+  methods: {
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
+    }
+  }
 }
 </script>
 

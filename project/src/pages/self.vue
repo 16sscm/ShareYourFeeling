@@ -3,12 +3,15 @@
       <el-aside width="300px">
       </el-aside>
       <el-main>
-        <selfcard :input="selfCardInput" ></selfcard>
+        <selfcard :input="selfCardInput" :is-me="isMe" ></selfcard>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-menu-item index="1">我的动态</el-menu-item>
-          <el-menu-item index="2">我的资料</el-menu-item>
-          <el-menu-item index="3">我的关注</el-menu-item>
-          <el-menu-item index="4">我的粉丝</el-menu-item>
+          <el-menu-item index="1" v-if="isMe">我的动态</el-menu-item>
+          <el-menu-item index="1" v-if="!isMe">他的动态</el-menu-item>
+          <el-menu-item index="2" v-if="isMe">我的资料</el-menu-item>
+          <el-menu-item index="3" v-if="isMe">我的关注</el-menu-item>
+          <el-menu-item index="3" v-if="!isMe">他的关注</el-menu-item>
+          <el-menu-item index="4" v-if="isMe">我的粉丝</el-menu-item>
+          <el-menu-item index="4" v-if="!isMe">他的粉丝</el-menu-item>
         </el-menu>
         <el-row id="search" v-if="currentIndex!=='2'">
           <el-col :span="5">
@@ -27,7 +30,9 @@
           <cardwithpictures :input="cardInputType3"></cardwithpictures>
         </div>
         <div v-if="currentIndex==='2'">
+          <el-card id="mycard">
           <editinforform :input="editformInput"></editinforform>
+          </el-card>
         </div>
         <div v-if="currentIndex==='3'">
           <peoplecard :input="cardInput"></peoplecard>
@@ -67,6 +72,7 @@ export default {
     CardWithoutPicture,
     Selfcard
   },
+  inject: ['reload'],
   data () {
     return {
       activeIndex: '1',
@@ -136,13 +142,22 @@ export default {
         signature: '这是他的签名',
         type: 'fans',
         hasgz: true
-      }
+      },
+      isMe: true
     }
   },
   methods: {
     handleSelect (key, keyPath) {
       this.currentIndex = key
     }
+  },
+  watch: {
+    '$route': function (to, from) {
+      this.reload()
+    }
+  },
+  created () {
+    this.isMe = this.$route.query.isme === '1'
   }
 }
 </script>
@@ -154,5 +169,8 @@ export default {
   #search{
     margin-top: 30px;
     margin-bottom: 20px;
+  }
+  #mycard{
+    margin-top: 30px;
   }
 </style>

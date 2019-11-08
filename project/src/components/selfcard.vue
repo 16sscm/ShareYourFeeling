@@ -10,7 +10,8 @@
         :before-remove="beforeRemove"
         :limit="3"
         :on-exceed="handleExceed"
-        :file-list="fileList">
+        :file-list="fileList"
+        v-if="isMe">
         <el-button size="small" type="primary">修改背景图</el-button>
       </el-upload>
       </el-col>
@@ -32,7 +33,7 @@ export default {
     return {
     }
   },
-  props: ['input']
+  props: ['input', 'isMe']
 }
 </script>
 

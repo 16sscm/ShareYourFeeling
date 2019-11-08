@@ -10,12 +10,12 @@
         </div>
       </el-col>
       <el-col :span="2">
-        <el-avatar :size="50" :src="input.avatarUrl"></el-avatar>
+        <el-avatar :size="50" :src="input.avatarUrl" @click.native="jumpToSelf" style="cursor: pointer"></el-avatar>
       </el-col>
     </el-row>
     <el-row v-if="input.type==='left'">
       <el-col :span="2">
-        <el-avatar :size="50" :src="input.avatarUrl"></el-avatar>
+        <el-avatar :size="50" :src="input.avatarUrl" @click.native="jumpToOther" style="cursor: pointer"></el-avatar>
       </el-col>
       <el-col :span="10">
         <div class="left">
@@ -34,7 +34,15 @@ export default {
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
     }
   },
-  props: ['input']
+  props: ['input'],
+  methods: {
+    jumpToOther () {
+      this.$router.push({path: '/self', query: {isme: '0'}})
+    },
+    jumpToSelf () {
+      this.$router.push({path: '/self', query: {isme: '1'}})
+    }
+  }
 }
 </script>
 

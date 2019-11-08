@@ -46,7 +46,7 @@
           </div>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item icon="el-icon-s-home" @click.native="goToSelf">主页</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage"><el-badge value="12>" 消息</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-chat-dot-round" @click.native="goToMessage">消息<el-badge value="12" class="item"></el-badge></el-dropdown-item>
             <el-dropdown-item icon="el-icon-star-on" @click.native="goToCollect">收藏</el-dropdown-item>
             <el-dropdown-item icon="el-icon-switch-button" @click.native="logout">退出</el-dropdown-item>
           </el-dropdown-menu>
@@ -100,7 +100,7 @@ export default {
       this.$router.push('/post')
     },
     goToSelf () {
-      this.$router.push('/self')
+      this.$router.push({path: '/self', query: {isme: '1'}})
     },
     goToMessage () {
       this.$router.push('/message')
@@ -169,5 +169,8 @@ export default {
 
   .el-icon-arrow-down {
     font-size: 12px;
+  }
+
+  .item {
   }
 </style>
