@@ -57,9 +57,10 @@
       </div>
       <el-input
         type="textarea"
-        :rows="2"
+        :autosize="{minRows:1,maxRows:4}"
         placeholder="请输入内容按下Enter发送"
-        v-model="textarea" resize="none">
+        v-model="textarea" resize="none"
+     id="inputbox">
       </el-input>
     </el-main>
   </el-container>
@@ -200,7 +201,9 @@ export default {
     color: white;
     font-size: 32px;
   }
-
+#inputbox::-webkit-scrollbar{
+  display: none;
+}
   #userava {
     margin-top: 5px;
   }
@@ -263,6 +266,9 @@ export default {
   #messagebox{
     height: 600px;
     overflow: auto;
+  }
+  #messagebox::-webkit-scrollbar{
+    display: none;
   }
   .item{
     margin-top: 10px;
