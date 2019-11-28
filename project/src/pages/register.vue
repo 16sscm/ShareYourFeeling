@@ -1,12 +1,12 @@
 <template>
     <el-container>
-      <el-aside width="600px"></el-aside>
+      <el-aside ></el-aside>
       <el-main>
         <span class="font">注册ShareYouFeeling</span>
         <registerform>
         </registerform>
       </el-main>
-      <el-aside width="600px"></el-aside>
+      <el-aside></el-aside>
     </el-container>
 </template>
 

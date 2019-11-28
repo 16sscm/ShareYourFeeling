@@ -1,11 +1,11 @@
 <template>
     <el-container id="main">
-      <el-aside width="600px"></el-aside>
+      <el-aside></el-aside>
   <el-main class="form">
     <span class="font">登录ShareYouFeeling</span>
     <loginform></loginform>
   </el-main>
-      <el-aside width="600px"></el-aside>
+      <el-aside ></el-aside>
     </el-container>
 </template>
 

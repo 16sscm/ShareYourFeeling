@@ -73,7 +73,7 @@
             :total="1000" id="pages">
           </el-pagination>
         </el-main>
-        <el-aside width="400px"></el-aside>
+        <el-aside ></el-aside>
       </el-container>
       </el-main>
 </template>
